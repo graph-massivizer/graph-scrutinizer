@@ -8,3 +8,5 @@ Roadmap:
  - request throttling
  - subscribe callbacks to be called upon successful/failed graph processing execution
  - check whether processing was already performed to avoid duplicates
+
+![architecture](scrutinizer.png)
