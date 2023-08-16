@@ -1,6 +1,22 @@
+from pathlib import Path
+from sys import executable
+from typing import Optional
 from redis import Redis
 import json
 import datetime
+import subprocess
+
+from inspect import getsourcefile
+
+# TODO this seems rather hacky. There might be a better way to structure this code
+sf: Optional[str] = getsourcefile(lambda:0) 
+if sf is None:
+    raise Exception("Could not determine executable location")
+f = Path(sf).absolute()
+directory = f.parent
+executable = directory / "full_bisimulation"
+assert executable.exists(), f"executable at {executable} not found"
+
 
 def consumer():
     redis_conn = Redis(host='localhost', port=6379)
@@ -9,7 +25,19 @@ def consumer():
         print("We just consumed: {}".format(processing_request))
         
         processing_request = json.loads(processing_request)
-        # TODO: fire processing request
+        # TODO: Now just from the file system, probably we need to encapsulate the file system and for sure make it more secure so only paths relative to a specific root are accessible.
+        path = str(processing_request["graph_path"])
+        #TODO these should come from the request
+        k = 10
+        output = "output.txt"
+        skip_singletons = True
+        support = 3
+        # example command
+        # full_bisimulation run_k_bisimulation_store_partition mappingbased-objects_lang\=en.ttl --k=3 --output=here.txt --skip_singletons --support=5
+
+        command = f"{executable} run_k_bisimulation_store_partition {path} --k={k} --output={output} {'--skip_singletons' if skip_singletons else ''} --support={support}"
+        subprocess.run(command , check=True, shell=False)
+
         print(type(processing_request['graph_processing_status_log']))
         processing_request['graph_processing_status_log']=processing_request['graph_processing_status_log']+[{'PROCESSING':str(datetime.datetime.now().isoformat())}]
         # TODO: persist into MongoDB
