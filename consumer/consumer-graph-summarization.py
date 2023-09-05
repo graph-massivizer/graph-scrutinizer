@@ -1,3 +1,4 @@
+from multiprocessing import process
 from pathlib import Path
 from sys import executable
 from typing import Optional
@@ -16,7 +17,7 @@ f = Path(sf).absolute()
 directory = f.parent
 executable = directory / "full_bisimulation"
 assert executable.exists(), f"executable at {executable} not found"
-
+executable_str = str(executable)
 
 def consumer():
     redis_conn = Redis(host='localhost', port=6379)
@@ -28,14 +29,17 @@ def consumer():
         # TODO: Now just from the file system, probably we need to encapsulate the file system and for sure make it more secure so only paths relative to a specific root are accessible.
         path = str(processing_request["graph_path"])
         #TODO these should come from the request
-        k = 10
+        k = int(processing_request["depth"])
         output = "output.txt"
-        skip_singletons = True
-        support = 3
+        skip_singletons = bool(processing_request["skip_singletons"])
+        support = int(processing_request["support"])
         # example command
         # full_bisimulation run_k_bisimulation_store_partition mappingbased-objects_lang\=en.ttl --k=3 --output=here.txt --skip_singletons --support=5
 
-        command = f"{executable} run_k_bisimulation_store_partition {path} --k={k} --output={output} {'--skip_singletons' if skip_singletons else ''} --support={support}"
+        command:list[str] = [executable_str, "run_k_bisimulation_store_partition", path, f"--k={k}", f"--output={output}", f"--support={support}"]
+        
+        if skip_singletons:
+            command.append('--skip_singletons')
         subprocess.run(command , check=True, shell=False)
 
         print(type(processing_request['graph_processing_status_log']))
