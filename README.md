@@ -11,3 +11,8 @@ Roadmap:
  - check whether processing was already performed to avoid duplicates
 
 ![architecture](scrutinizer.png)
+
+## Tool Tests
+| Test | Validates Condition | Pass/Failure Criteria | Description |
+| ---- | ------------------- | --------------------- | ----------- |
+|||||
