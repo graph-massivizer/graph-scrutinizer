@@ -6,6 +6,9 @@ pip install redis
 ## Running any consumer
     python consumer-script-name.py
 
+### Running the betweenness centrality consumer
+The demo data is available at the [following link](https://drive.google.com/file/d/196iPQ3qq7ILe8JKoXI4-suyNXuKCOy8h/view?usp=drive_link)
+
 ### Running the graph_summary consumer
 
 This consumer runs the full_bisimulation binary on an n-triples graph.

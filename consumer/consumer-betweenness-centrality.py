@@ -19,6 +19,7 @@ def consumer():
         # TODO: Now just from the file system, probably we need to encapsulate the file system and for sure make it more secure so only paths relative to a specific root are accessible.
         path = str(processing_request["graph_path"])
 
+        # TODO: we agree to build a library of converters
         # TODO START: This conversion from turtle to a processable graph interface should be handled by Inceptor?
         g = Graph()
         g.parse(path)
@@ -32,6 +33,9 @@ def consumer():
             {'PROCESSING': str(datetime.datetime.now().isoformat())}]
         centrality = nx.betweenness_centrality(G, normalized=True, endpoints=True, seed=0)
         most_cited = sorted([(k, v) for k, v in centrality.items()], key=lambda x: x[1], reverse=True)[0][0]
+        # hardware config, how much it took, energy consumption?, ...
+        # make this data collection generic by doing it through decorators
+
         print("TODO: We found most cited work: {}".format(most_cited))
         print("TODO: we need to persist somewhere!")
         # TODO: persist into MongoDB
