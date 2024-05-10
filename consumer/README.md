@@ -3,8 +3,10 @@ The module has a set of listeners that listen for specific graph processing acti
 
 pip install redis
 
+## Running any consumer
+    python consumer-script-name.py
 
-## Running the graph_summary consumer
+### Running the graph_summary consumer
 
 This consumer runs the full_bisimulation binary on an n-triples graph.
 This binary is a stand-alone binary compiled for linux x86-64, file info:
