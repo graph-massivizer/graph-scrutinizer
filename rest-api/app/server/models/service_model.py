@@ -25,7 +25,6 @@ class SummarizationRequest(BaseModel):
     class Config:
         schema_extra = {
             "example": {
-                "graph_processing_action": "graph-summarization",
                 "graph_path": "file:///input/graphs/use-case-graph.csv",
                 "depth": "5",
                 "skip_singletons":"True",
@@ -33,6 +32,15 @@ class SummarizationRequest(BaseModel):
             }
         }
 
+class BetweennessCentralityRequest(BaseModel):
+    graph_path: str = Field(...)
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "graph_path": "file:///input/graphs/use-case-graph.csv"
+            }
+        }
 
 class GraphProcessingTask(BaseModel):
     graph_processing_action: str = Field(...)
@@ -79,6 +87,30 @@ class SummarizationGraphProcessingTask(BaseModel):
                 "depth" : "5",
                 "skip_singletons":"True",
                 "support" : "7",
+                "graph_processing_status": "ENQUEUED",
+                "graph_processing_status_log": [{"ENQUEUED": "2020-03-20T14:28:23.382748"}],
+                "graph_processing_result": "file:///output/tasks/some-output-file.csv",
+            }
+        }
+
+class GraphProcessingTaskBetweennessCentrality(BaseModel):
+    graph_processing_action: str = Field(...)
+    graph_path: str = Field(...)
+
+    # graph_hash: str = Field(...)
+    graph_processing_id: str = Field(...)
+    graph_processing_status: str = Field(...)
+    graph_processing_status_log: list[dict[str, str]] = Field(...)
+    graph_processing_result: str = Field(...)
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "graph_processing_action": "graph-summarization",
+                "graph_path": "file:///input/graphs/use-case-graph.csv",
+                # "graph_hash": "ca898ed7d566fc81fdefbd2ae014a58d",
+                "graph_processing_id": "14a58dd566fc81fdeca898ed7fbd2ae0",
+
                 "graph_processing_status": "ENQUEUED",
                 "graph_processing_status_log": [{"ENQUEUED": "2020-03-20T14:28:23.382748"}],
                 "graph_processing_result": "file:///output/tasks/some-output-file.csv",
