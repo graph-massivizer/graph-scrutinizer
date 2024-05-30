@@ -1,5 +1,7 @@
 # BETA TESTING
-- Download the following file: https://drive.google.com/file/d/1FpaARB7sCDHd_L5mSMgESjkbI9kzveto/view?usp=sharing
+- Download the following files: 
+  - [Citation network - tiny](https://drive.google.com/file/d/1FpaARB7sCDHd_L5mSMgESjkbI9kzveto/view?usp=sharing)
+  - [Citation network - small](https://drive.google.com/file/d/1NrN4YTX8Qy1sJbtP9BBnCCyUrGNQKOe0/view?usp=sharing)
 - Make sure Docker is installed on your machine
 - In the directory: persistence-layer, execute: docker-compose up
 - In the directory: consumer, execute: python consumer-betweenness-centrality.py
