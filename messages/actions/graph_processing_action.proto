@@ -1,0 +1,23 @@
+
+
+enum Status{
+    NOT_STARTED = 0;
+    DONE = 1;
+}
+
+message LogEntry{
+    map<string, string> entry = 0;
+}
+
+message Log{
+    repeated LogEntry entries = 1;
+}
+
+message GraphProcessingTask{
+    string graph_processing_action = 1;
+    string graph_processing_id = 2;
+    status graph_processing_status = 3;
+    optional Log graph_processing_status_log = 4;
+    optional string graph_processing_result = 5;
+}
+

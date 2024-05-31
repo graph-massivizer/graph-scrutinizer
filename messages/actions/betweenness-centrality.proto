@@ -1,0 +1,9 @@
+
+import "myproject/other_protos.proto";
+
+message GraphProcessingTaskBetweennessCentrality{
+  GraphProcessingTask taskinfo = 1;
+}
+
+
+
