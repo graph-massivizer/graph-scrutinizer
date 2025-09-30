@@ -6,7 +6,7 @@ This is the main repository for the Graph-Scrutinizer tool developed in the Grap
 
 ### Purpose
 
-Creation of knowledge graphs (KGs), processing and storage of graph data. 
+Processing of graph and time series data, with a focus on increased scalability.
 
 ### Key features
 
