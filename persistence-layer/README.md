@@ -1,3 +1,0 @@
-- Ensure the 'data' directory exists
-- To prune the containers, run: docker container prune
-- To run the database and redis, execute: docker-compose up
