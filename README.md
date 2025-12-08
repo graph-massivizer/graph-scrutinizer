@@ -37,7 +37,7 @@ The three tools are maintained in three separate repositories on GitHub:
 
 * https://github.com/graph-massivizer/go-network
 * https://github.com/graph-massivizer/ts2g2
-* https://github.com/R-van-Bakel/Multi-Summaries
+* https://github.com/graph-massivizer/Multi-Summaries
 
 ### License
 
@@ -64,4 +64,4 @@ The Graph-Scrutinizer tools offers BGOs that can be used when processing graphs 
 
 ## Tests
 
-A detailed demo for the three Graph-Scrutinizer tools can be found on GitHub: https://github.com/R-van-Bakel/Graph-Scrutinizer_Demo_2.0 
+A detailed demo for the three Graph-Scrutinizer tools can be found on GitHub: https://github.com/graph-massivizer/Graph-Scrutinizer_Demo_2.0 
