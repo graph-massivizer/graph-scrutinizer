@@ -10,7 +10,7 @@ Processing of graph and time series data, with a focus on increased scalability.
 
 ### Key features
 
-Graph-Scrutinizer offers three tools services:
+Graph-Scrutinizer offers four tools services:
 
 * The **Go-Network** tool that 
     * implements deterministic algorithms for creating classic, synthetic graph;
@@ -21,6 +21,11 @@ Graph-Scrutinizer offers three tools services:
     * implements several conversion algorithms for time series to graphs and for graphs to time series;
     * provides functions for analyzing and visualizing the aforementioned time series and graphs; and
     * provides a detailed demo for understanding the tool and underlying algorithms.
+ 
+* The **QoR-Sampler-Selection** tool that
+    * implements graph feature extraction methods;
+    * implements training graph sampling selection models;
+    * provides scripts for analysing the results.
 
 * The **Multi-Summaries** tool that
     * implements an efficient algorithm for computing and representing the full k-forward bisimulation of a graph in the form of a multi-summary;
@@ -33,11 +38,12 @@ Each of our tools are meant to operate in a standalone manner, without any inter
 
 ### Source code repositories
 
-The three tools are maintained in three separate repositories on GitHub:
+The four tools are maintained in four separate repositories on GitHub:
 
 * https://github.com/graph-massivizer/go-network
 * https://github.com/graph-massivizer/ts2g2
 * https://github.com/graph-massivizer/Multi-Summaries
+* https://github.com/graph-massivizer/QoR-sampler-selection
 
 ### License
 
